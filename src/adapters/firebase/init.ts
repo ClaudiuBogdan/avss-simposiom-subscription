@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-const admin = require("firebase-admin");
+import admin from "firebase-admin";
 import { config } from "@/config";
 
 const firebaseCredential = JSON.parse(config.firebase.credential);

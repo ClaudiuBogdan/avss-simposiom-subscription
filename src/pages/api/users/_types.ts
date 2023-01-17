@@ -1,6 +1,7 @@
-import { IsNotEmpty, IsEmail, IsPhoneNumber } from "class-validator";
+import { UserType } from "@/dsl/users/types";
+import { IsNotEmpty, IsEmail, IsPhoneNumber, IsEnum } from "class-validator";
 
-export class CreateUserDTO {
+export class CreateUserInput {
   @IsNotEmpty()
   name: string;
 
@@ -9,4 +10,7 @@ export class CreateUserDTO {
 
   @IsPhoneNumber("RO")
   phone: string;
+
+  @IsEnum(UserType)
+  userType: UserType;
 }
