@@ -10,6 +10,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = admin.initializeApp(firebaseConfig);
+const firebaseApp = admin.apps[0] ?? admin.initializeApp(firebaseConfig);
 
 export const database = admin.database(firebaseApp);
