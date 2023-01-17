@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsEmail, IsPhoneNumber } from "class-validator";
-import { BaseResponse } from "../_types";
 
 export class CreateUserDTO {
   @IsNotEmpty()
@@ -11,5 +10,3 @@ export class CreateUserDTO {
   @IsPhoneNumber("RO")
   phone: string;
 }
-
-export type CreateUserResponse = BaseResponse & {};
