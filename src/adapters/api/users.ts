@@ -1,6 +1,8 @@
 import axios from "axios";
 import useSWRMutation from "swr/mutation";
 
+// https://swr.vercel.app/docs/mutation#useswrmutation
+
 export type UserFormData = {
   name: string;
   email: string;
@@ -30,8 +32,10 @@ export const useCreateUser = () => {
   const createUser = async (data: UserFormData) => {
     trigger(data);
   };
+
   const error = mutationError || mutationData?.errors;
   const data = error ? null : mutationData;
   const loading = isMutating;
+  
   return { createUser, data, loading, error };
 };
