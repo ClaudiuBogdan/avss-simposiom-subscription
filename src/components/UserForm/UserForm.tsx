@@ -16,6 +16,7 @@ export const UserForm: FC<Props> = () => {
   }, [checkoutUrl]);
 
   const handleSubmit = (data: UserFormData) => {
+    throw new Error("Not implemented");
     createUser(data);
   };
 
@@ -23,7 +24,7 @@ export const UserForm: FC<Props> = () => {
     <section>
       <UserFormComponent disabled={loading} onSubmit={handleSubmit} />
       {loading && <p>Loading...</p>}
-      {error && (
+      {error && error.length && (
         <div
           className="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-gray-800 dark:text-red-400"
           role="alert"

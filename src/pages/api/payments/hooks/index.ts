@@ -24,8 +24,6 @@ export default async function handler(
   const rawEvent = await buffer(req);
   const stripeSignature = req.headers["stripe-signature"] as string;
   const event = parseRawEvent(rawEvent, stripeSignature);
-  // @ts-ignore
-  event.data.object.customer = "cus_NC6U0iOdFnBuUs"; // FIXME: remove
   await processEvent(event);
 
   res.status(200).send({});

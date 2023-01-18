@@ -7,7 +7,7 @@ type Price = {
 };
 
 export const NON_MEDICAL_PRICE: Price = Object.freeze({
-  id: "price_1MRKVcHuk0JibvTm9ttlMKZz", //FIXME: Price id from Stripe dashboard
+  id: "price_1MRKVcHuk0JibvTm9ttlMKZz", // Price id from Stripe dashboard
   value: 60, // Prices must also be changed in Stripe dashboard
   currency: "RON",
 });
