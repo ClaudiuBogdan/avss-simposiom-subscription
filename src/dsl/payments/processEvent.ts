@@ -1,5 +1,5 @@
 import { updateUserPayment } from "@/adapters/firebase";
-import { sendPaymentConfirmationEmail } from "@/adapters/mailsend";
+import { sendPaymentConfirmationEmail } from "@/adapters/mailer";
 import Stripe from "stripe";
 import { UserPayment } from "./types";
 

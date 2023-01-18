@@ -27,4 +27,13 @@ export const config = {
     version: loadEnv("APP_VERSION"),
     baseUrl: loadEnv("APP_BASE_URL"),
   },
+  smtp: {
+    fromEmail: loadEnv("SMTP_FROM_EMAIL"),
+    host: loadEnv("SMTP_HOST"),
+    port: loadEnv("SMTP_PORT"),
+    auth: {
+      user: loadEnv("SMTP_USERNAME"),
+      pass: loadEnv("SMTP_PASSWORD"),
+    },
+  },
 };

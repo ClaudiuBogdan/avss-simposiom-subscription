@@ -31,7 +31,10 @@ export const updateUserPayment = async (
     throw new Error("User not found for customer id");
   }
 
-  const user: User = snapshot.val();
+  // Get first user
+  const userId = Object.keys(snapshot.val())[0];
+  const user: User = snapshot.val()[userId];
+  user.id = userId;
   user.payment = payment;
 
   await database.ref(`${userRef}/${user.id}/payment`).set(payment);
