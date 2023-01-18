@@ -1,3 +1,5 @@
+import { UserPayment } from "../payments/types";
+
 export type UserInput = {
   name: string;
   email: string;
@@ -11,3 +13,15 @@ export enum UserType {
   RESIDENT_DOCTOR = "RESIDENT_DOCTOR",
   DOCTOR = "DOCTOR",
 }
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  userType: string;
+  customerId: string;
+  createdAt: string;
+  updatedAt: string;
+  payment?: UserPayment;
+};
