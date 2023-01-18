@@ -1,25 +1,28 @@
 "use client";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { UserFormData } from "./types";
 import { useContainer } from "./useContainer";
 import { UserFormComponent } from "./UserFormComponent";
 
-export const UserForm: FC = () => {
-  const { createUser, data, error, loading } = useContainer();
+type Props = {};
+
+export const UserForm: FC<Props> = () => {
+  const { createUser, checkoutUrl, error, loading } = useContainer();
+
+  useEffect(() => {
+    if (checkoutUrl) {
+      location.href = checkoutUrl;
+    }
+  }, [checkoutUrl]);
 
   const handleSubmit = (data: UserFormData) => {
-    console.log("handleSubmit", data);
     createUser(data);
   };
 
   return (
     <section>
-      <UserFormComponent
-        // disabled={loading || data}
-        onSubmit={handleSubmit}
-      />
+      <UserFormComponent disabled={loading} onSubmit={handleSubmit} />
       {loading && <p>Loading...</p>}
-      {data && <p>{JSON.stringify(data)}</p>}
       {error && (
         <div
           className="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-gray-800 dark:text-red-400"

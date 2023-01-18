@@ -18,6 +18,7 @@ export const config = {
   },
   stripe: {
     secretKey: loadEnv("STRIPE_SECRET_KEY"),
+    webhookSecret: loadEnv("STRIPE_WEBHOOK_SECRET"),
     successUrl: `${loadEnv("APP_BASE_URL")}/successful-payment`,
     cancelUrl: `${loadEnv("APP_BASE_URL")}/canceled-payment`,
   },
