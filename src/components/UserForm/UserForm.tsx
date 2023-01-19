@@ -16,7 +16,6 @@ export const UserForm: FC<Props> = () => {
   }, [checkoutUrl]);
 
   const handleSubmit = (data: UserFormData) => {
-    throw new Error("Not implemented");
     createUser(data);
   };
 
