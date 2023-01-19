@@ -2,9 +2,7 @@
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  reactStrictMode: true,
   sentry: {
     hideSourceMaps: false,
     autoInstrumentServerFunctions: true,

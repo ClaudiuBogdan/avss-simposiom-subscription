@@ -7,7 +7,7 @@ export type CheckoutSessionInput = {
 };
 
 export const useCreateCheckoutSession = () => {
-  const userUrl = "/api/checkout";
+  const userUrl = "/api/payments/checkout";
   const {
     data: mutationData,
     error: mutationError,
