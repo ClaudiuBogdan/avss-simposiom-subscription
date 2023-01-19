@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { UserForm } from "@/components/UserForm";
 
 export default function Home() {
   return (
@@ -11,7 +10,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <UserForm />
+        <h1>Welcome!</h1>
+        <button>
+          <a href="/registration">Register</a>
+        </button>
       </main>
     </>
   );
