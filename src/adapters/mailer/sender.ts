@@ -3,7 +3,6 @@ import { mailer } from "./init";
 
 export const sendPaymentConfirmationEmail = async (args: {
   email: string;
-  name: string;
 }) => {
   const from = config.smtp.fromEmail;
   const { email: to } = args;
