@@ -54,7 +54,7 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
       <Input
         label={"CNP"}
         name={"cnp"}
-        type={"text"}
+        type={"number"}
         placeholder={"Cod Numeric Personal"}
         value={state.cnp}
         onChange={(e) =>
@@ -80,7 +80,7 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
       <Input
         label={"Telefon"}
         name={"phone"}
-        type={"text"}
+        type={"number"}
         placeholder={"Ex: 07xxxxxxxx"}
         value={state.phone}
         onChange={(e) =>

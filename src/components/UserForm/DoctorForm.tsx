@@ -28,7 +28,7 @@ export const DoctorForm: FC<Props> = ({ state, dispatch }) => {
       <Input
         label={"CUIM"}
         name={"cuim"}
-        type={"text"}
+        type={"number"}
         length={10}
         placeholder={"Ex: 1234567890"}
         value={state.cuim}
