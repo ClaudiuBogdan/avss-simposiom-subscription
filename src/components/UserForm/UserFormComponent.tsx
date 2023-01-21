@@ -1,64 +1,25 @@
-import { FC, useState } from "react";
+import { FC, useReducer, useState } from "react";
+import { DoctorForm } from "./DoctorForm";
 import { Input } from "./Input";
+import { NonMedicalForm } from "./NonMedicalForm";
+import { NurseForm } from "./NurseForm";
 import { Submit } from "./Submit";
-import { UserFormData, UserType } from "./types";
-import { UserTypeSelector } from "./UserTypeSelector";
+import { FormState, UserType } from "./types";
+import { Selector } from "./Selector";
+import { initialState, reducer } from "./store";
 
 type Props = {
-  onSubmit: (data: UserFormData) => void;
+  onSubmit: (data: FormState) => void;
   disabled?: boolean;
 };
 
 export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
-  const [firstNameValue, setFirstNameValue] = useState("");
-  const [lastNameValue, setLastNameValue] = useState("");
-  const [cnpValue, setCnpValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [phoneValue, setPhoneValue] = useState("");
-  const [userTypeValue, setUseTypeValue] = useState<UserType>("" as UserType);
-
-  const handleFirstNameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const newFirstNameValue = event.target.value;
-    setFirstNameValue(newFirstNameValue);
-  };
-
-  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newNameValue = event.target.value;
-    setLastNameValue(newNameValue);
-  };
-
-  const handleCnpValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newCnpValue = event.target.value;
-    setCnpValue(newCnpValue);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmailValue = event.target.value;
-    setEmailValue(newEmailValue);
-  };
-
-  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newPhoneValue = event.target.value;
-    setPhoneValue(newPhoneValue);
-  };
-
-  const handleUseTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newUseTypeValue = event.target.value;
-    setUseTypeValue(newUseTypeValue as UserType);
-  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!userTypeValue) return;
 
-    onSubmit({
-      name: lastNameValue,
-      email: emailValue,
-      phone: phoneValue,
-      userType: userTypeValue,
-    });
+    onSubmit(state);
   };
 
   return (
@@ -68,8 +29,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         name={"firstName"}
         type={"text"}
         placeholder={"Ex: Gabriela"}
-        value={firstNameValue}
-        onChange={handleFirstNameChange}
+        value={state.firstName}
+        onChange={e => dispatch({ type: "firstNameChanged", payload: e.target.value })}
         required={true}
         disabled={false}
       />
@@ -78,8 +39,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         name={"lastName"}
         type={"text"}
         placeholder={"Ex: Achim"}
-        value={lastNameValue}
-        onChange={handleLastNameChange}
+        value={state.lastName}
+        onChange={e => dispatch({ type: "lastNameChanged", payload: e.target.value })}
         required={true}
         disabled={false}
       />
@@ -89,8 +50,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         name={"cnp"}
         type={"text"}
         placeholder={"Cod Numeric Personal"}
-        value={cnpValue}
-        onChange={handleCnpValueChange}
+        value={state.cnp}
+        onChange={e => dispatch({ type: "cnpChanged", payload: e.target.value })}
         required={true}
         disabled={false}
       />
@@ -100,8 +61,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         name={"email"}
         type={"email"}
         placeholder={"Ex: gariela@gmail.com"}
-        value={emailValue}
-        onChange={handleEmailChange}
+        value={state.email}
+        onChange={e => dispatch({ type: "emailChanged", payload: e.target.value })}
         required={true}
         disabled={false}
       />
@@ -111,21 +72,31 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         name={"phone"}
         type={"text"}
         placeholder={"Ex: 07xxxxxxxx"}
-        value={phoneValue}
-        onChange={handlePhoneChange}
+        value={state.phone}
+        onChange={e => dispatch({ type: "phoneChanged", payload: e.target.value })}
         required={true}
         disabled={false}
       />
-      <UserTypeSelector
-        label={"Profesie"}
+
+      <Selector
+        label={"Categorie"}
         name={"userType"}
-        type={""}
-        placeholder={"---- Selectati profesie ----"}
-        value={userTypeValue}
-        onChange={handleUseTypeChange}
+        placeholder={"---- Selectati categorie ----"}
+        options={[
+          { value: "NON_MEDICAL", label: "Non-medical" },
+          { value: "NURSE", label: "Asistent medical" },
+          { value: "DOCTOR", label: "Medic" },
+        ]}
+        value={state.userType}
+        onChange={e => dispatch({ type: "userTypeChanged", payload: e.target.value as UserType})}
         required={true}
         disabled={false}
       />
+
+      {state.userType === "NON_MEDICAL" && <NonMedicalForm {...{state, dispatch}}/>}
+      {state.userType === "NURSE" && <NurseForm {...{state, dispatch}}/>}
+      {state.userType === "DOCTOR" && <DoctorForm {...{state, dispatch}}/>}
+
       <Submit label="Go to payment" disabled={disabled} />
     </form>
   );

@@ -33,9 +33,10 @@ export const useCreateCheckoutSession = () => {
     [trigger]
   );
 
-  const error = mutationError || mutationData?.errors;
-  const data = error ? null : mutationData;
+  const errors =
+    (mutationError && [mutationError.message]) || mutationData?.errors;
+  const data = errors ? null : mutationData;
   const loading = isMutating;
 
-  return { createCheckoutSession, data, loading, error };
+  return { createCheckoutSession, data, loading, errors };
 };

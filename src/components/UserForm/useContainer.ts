@@ -7,17 +7,17 @@ export const useContainer = () => {
     createUser,
     loading: createUserLoading,
     data: userData,
-    error: createUserError,
+    errors: createUserErrors,
   } = useCreateUser();
   const {
     createCheckoutSession,
     data: checkoutUrl,
     loading: createCheckoutSessionLoading,
-    error: createCheckoutSessionError,
+    errors: createCheckoutSessionErrors,
   } = useCreateCheckoutSession();
 
   const loading = createUserLoading || createCheckoutSessionLoading;
-  const error = createUserError || createCheckoutSessionError;
+  const errors = createUserErrors || createCheckoutSessionErrors;
 
   useEffect(() => {
     if (userData) {
@@ -29,6 +29,6 @@ export const useContainer = () => {
     createUser,
     checkoutUrl,
     loading,
-    error,
+    errors,
   };
 };

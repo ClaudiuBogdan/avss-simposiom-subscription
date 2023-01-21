@@ -4,9 +4,9 @@ import { database } from "../init";
 
 const userRef = "users";
 
-export const insertUser = async (userDB: User) => {
-  const { id: userId, ...data } = userDB;
-  return database.ref(`${userRef}/${userId}`).set(data);
+export const insertUser = async (userData: User) => {
+  const userId = userData.id;
+  return database.ref(`${userRef}/${userId}`).set(userData);
 };
 
 export const getUserById = async (userId: string) => {
@@ -34,7 +34,7 @@ export const updateUserPayment = async (
   // Get first user
   const userId = Object.keys(snapshot.val())[0];
   const user: User = snapshot.val()[userId];
-  user.id = userId;
+
   user.payment = payment;
 
   await database.ref(`${userRef}/${user.id}/payment`).set(payment);

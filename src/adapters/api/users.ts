@@ -4,9 +4,7 @@ import useSWRMutation from "swr/mutation";
 // https://swr.vercel.app/docs/mutation#useswrmutation
 
 export type UserFormData = {
-  name: string;
-  email: string;
-  phone: string;
+  [key: string]: string | number | boolean;
 };
 
 export const useCreateUser = () => {
@@ -33,9 +31,10 @@ export const useCreateUser = () => {
     trigger(data);
   };
 
-  const error = mutationError || mutationData?.errors;
-  const data = error ? null : mutationData;
+  const errors =
+    (mutationError && [mutationError.message]) || mutationData?.errors;
+  const data = errors ? null : mutationData;
   const loading = isMutating;
-  
-  return { createUser, data, loading, error };
+
+  return { createUser, data, loading, errors };
 };

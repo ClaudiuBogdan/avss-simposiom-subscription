@@ -3,19 +3,20 @@ import { FC } from "react";
 type Props = {
   label: string;
   name: string;
-  type: string;
   placeholder: string;
   value: string;
+  options: Array<{ value: string; label: string }>;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   required: boolean;
   disabled: boolean;
 };
 
-export const UserTypeSelector: FC<Props> = ({
+export const Selector: FC<Props> = ({
   label,
   name,
   placeholder,
   value,
+  options,
   onChange,
   required,
   disabled,
@@ -42,10 +43,11 @@ export const UserTypeSelector: FC<Props> = ({
           <option disabled value={""}>
             {placeholder}
           </option>
-          <option value={"NON_MEDICAL"}>Non-medical</option>
-          <option value={"NURSE"}>Asistenți medicali</option>
-          <option value={"RESIDENT_DOCTOR"}>Medici rezidenți</option>
-          <option value={"DOCTOR"}>Medici primari /specialisti</option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg

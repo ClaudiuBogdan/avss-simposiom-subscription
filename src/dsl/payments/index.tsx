@@ -15,7 +15,7 @@ export const createCheckoutSessionUrl = async (
     throw new Error("User not found");
   }
 
-  const priceId = mapUserTypeToPriceId(user.userType);
+  const priceId = mapUserTypeToPriceId(user.userType, user.doctorType);
 
   const checkoutSession = await createCheckoutSession({
     customerId: user.customerId,

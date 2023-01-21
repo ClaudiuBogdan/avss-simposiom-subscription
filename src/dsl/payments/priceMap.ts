@@ -5,7 +5,10 @@ import {
   RESIDENT_DOCTOR_PRICE,
 } from "@/adapters/stripe/resources/prices";
 
-export const mapUserTypeToPriceId = (userType: string): string => {
+export const mapUserTypeToPriceId = (
+  userType: string,
+  doctorType: string
+): string => {
   if (userType === "NON_MEDICAL") {
     return NON_MEDICAL_PRICE.id;
   }
@@ -14,11 +17,11 @@ export const mapUserTypeToPriceId = (userType: string): string => {
     return NURSE_PRICE.id;
   }
 
-  if (userType === "RESIDENT_DOCTOR") {
-    return RESIDENT_DOCTOR_PRICE.id;
-  }
-
   if (userType === "DOCTOR") {
+    if (doctorType === "rezident") {
+      return RESIDENT_DOCTOR_PRICE.id;
+    }
+
     return DOCTOR_PRICE.id;
   }
 

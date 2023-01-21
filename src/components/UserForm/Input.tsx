@@ -9,6 +9,7 @@ type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   required: boolean;
   disabled: boolean;
+  length?: number;
 };
 
 export const Input: FC<Props> = ({
@@ -20,6 +21,7 @@ export const Input: FC<Props> = ({
   onChange,
   required,
   disabled,
+  length,
 }) => {
   return (
     <div className="md:flex md:items-center mb-6">
@@ -35,13 +37,16 @@ export const Input: FC<Props> = ({
         <input
           className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
           id={name}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          required={required}
-          disabled={disabled}
+          {...{
+            type,
+            placeholder,
+            value,
+            onChange,
+            required,
+            disabled,
+            minLength: length,
+            maxLength: length,
+          }}
         />
       </div>
     </div>
