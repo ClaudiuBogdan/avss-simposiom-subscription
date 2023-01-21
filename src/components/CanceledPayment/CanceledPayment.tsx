@@ -20,7 +20,7 @@ export const CanceledPayment: FC = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-4xl font-bold text-center">
-          Plata a fost efectuata cancelata!
+          Plata a fost anulata!
         </h1>
         <p className="text-xl text-center mt-2">
           Veti fi redirectionat catre pagina principala in {seconds} secunde.
