@@ -22,7 +22,23 @@ export const processEvent = async (event: Stripe.Event) => {
     case "payment_intent.succeeded":
       const payment = mapEventToPayment(event);
       const user = await updateUserPayment(payment.customerId, payment);
-      await sendPaymentConfirmationEmail(user);
+
+      const paymentId = payment.id.substring(2, 10);
+      const paymentAmount =
+        (payment.amount / 100).toFixed(2) +
+        " " +
+        payment.currency.toUpperCase();
+
+      const paymentDate = new Date(payment.created * 1000).toLocaleDateString();
+
+      await sendPaymentConfirmationEmail({
+        email: user.email,
+        firstName: user.firstName,
+        paymentId,
+        paymentAmount,
+        paymentDate,
+      });
+
       console.log("payment_intent.succeeded");
       break;
     case "payment_intent.payment_failed":
