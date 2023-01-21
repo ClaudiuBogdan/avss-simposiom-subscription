@@ -7,13 +7,15 @@ import { Submit } from "./Submit";
 import { FormState, UserType } from "./types";
 import { Selector } from "./Selector";
 import { initialState, reducer } from "./store";
+import { Errors } from "./Errors";
 
 type Props = {
   onSubmit: (data: FormState) => void;
+  errors: string[];
   loading?: boolean;
 };
 
-export const UserFormComponent: FC<Props> = ({ onSubmit, loading }) => {
+export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +25,7 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading }) => {
   };
 
   return (
-    <form className="w-full max-w-sm" onSubmit={handleSubmit}>
+    <form className="w-full max-w-xl" onSubmit={handleSubmit}>
       <Input
         label={"Prenume"}
         name={"firstName"}
@@ -113,6 +115,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading }) => {
       )}
       {state.userType === "NURSE" && <NurseForm {...{ state, dispatch }} />}
       {state.userType === "DOCTOR" && <DoctorForm {...{ state, dispatch }} />}
+
+      {errors && <Errors errors={errors} />}
 
       <Submit
         label="Go to payment"

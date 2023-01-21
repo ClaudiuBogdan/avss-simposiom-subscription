@@ -77,16 +77,21 @@ export const DoctorForm: FC<Props> = ({ state, dispatch }) => {
         required={true}
         disabled={false}
       />
-      <div
-        className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
-        role="alert"
-      >
-        <p className="font-bold">Verificati CUIM</p>
-        <p>
-          Este foarte important sa completati CUIM in mod corect pentru ca
-          astfel punctele EMC obtinute de Dumneavoastra in cadrul acestei
-          conferinte sa fi recunoscute de CMR.
-        </p>
+      <div className="md:flex md:items-center mb-6">
+        <div className="md:w-1/3"></div>
+        <div className="md:w-2/3">
+          <div
+            className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
+            role="alert"
+          >
+            <p className="font-bold">Verificati CUIM</p>
+            <p>
+              Este foarte important sa completati CUIM in mod corect pentru ca
+              astfel punctele EMC obtinute de Dumneavoastra in cadrul acestei
+              conferinte sa fi recunoscute de CMR.
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );

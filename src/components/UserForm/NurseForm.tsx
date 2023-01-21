@@ -45,17 +45,22 @@ export const NurseForm: FC<Props> = ({ state, dispatch }) => {
         required={true}
         disabled={false}
       />
-
-      <div
-        className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
-        role="alert"
-      >
-        <p className="font-bold">Verificati OAMGMAMR</p>
-        <p>
-          Este foarte important sa completati numar certificat membru OAMGMAMR
-          in mod corect pentru ca astfel punctele EMC obtinute de Dumneavoastra
-          in cadrul acestei conferinte sa fi recunoscute de OAMGMAMR.
-        </p>
+      <div className="md:flex md:items-center mb-6">
+        <div className="md:w-1/3"></div>
+        <div className="md:w-2/3">
+          <div
+            className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
+            role="alert"
+          >
+            <p className="font-bold">Verificati OAMGMAMR</p>
+            <p>
+              Este foarte important sa completati numar certificat membru
+              OAMGMAMR in mod corect pentru ca astfel punctele EMC obtinute de
+              Dumneavoastra in cadrul acestei conferinte sa fi recunoscute de
+              OAMGMAMR.
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
