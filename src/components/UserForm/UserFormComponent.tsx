@@ -68,7 +68,7 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
         label={"Email"}
         name={"email"}
         type={"email"}
-        placeholder={"Ex: gariela@gmail.com"}
+        placeholder={"Ex: gabriela@gmail.com"}
         value={state.email}
         onChange={(e) =>
           dispatch({ type: "emailChanged", payload: e.target.value })
