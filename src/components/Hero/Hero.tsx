@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import HeroImg from "../../../public/assets/images/hero.jpg";
+import HeroImg from "../../../public/assets/images/hero.gif";
 
 export const Hero: FC = () => {
   return (
@@ -43,7 +43,7 @@ export const Hero: FC = () => {
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
           <Image
-            className="object-cover object-center w-full h-full"
+            className="object-cover object-center w-full h-full p-20"
             src={HeroImg}
             alt="mockup"
           />
