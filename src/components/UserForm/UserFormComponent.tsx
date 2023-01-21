@@ -10,10 +10,10 @@ import { initialState, reducer } from "./store";
 
 type Props = {
   onSubmit: (data: FormState) => void;
-  disabled?: boolean;
+  loading?: boolean;
 };
 
-export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
+export const UserFormComponent: FC<Props> = ({ onSubmit, loading }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +30,9 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         type={"text"}
         placeholder={"Ex: Gabriela"}
         value={state.firstName}
-        onChange={e => dispatch({ type: "firstNameChanged", payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: "firstNameChanged", payload: e.target.value })
+        }
         required={true}
         disabled={false}
       />
@@ -40,7 +42,9 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         type={"text"}
         placeholder={"Ex: Achim"}
         value={state.lastName}
-        onChange={e => dispatch({ type: "lastNameChanged", payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: "lastNameChanged", payload: e.target.value })
+        }
         required={true}
         disabled={false}
       />
@@ -51,7 +55,9 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         type={"text"}
         placeholder={"Cod Numeric Personal"}
         value={state.cnp}
-        onChange={e => dispatch({ type: "cnpChanged", payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: "cnpChanged", payload: e.target.value })
+        }
         required={true}
         disabled={false}
       />
@@ -62,7 +68,9 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         type={"email"}
         placeholder={"Ex: gariela@gmail.com"}
         value={state.email}
-        onChange={e => dispatch({ type: "emailChanged", payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: "emailChanged", payload: e.target.value })
+        }
         required={true}
         disabled={false}
       />
@@ -73,7 +81,9 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
         type={"text"}
         placeholder={"Ex: 07xxxxxxxx"}
         value={state.phone}
-        onChange={e => dispatch({ type: "phoneChanged", payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: "phoneChanged", payload: e.target.value })
+        }
         required={true}
         disabled={false}
       />
@@ -88,16 +98,27 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, disabled }) => {
           { value: "DOCTOR", label: "Medic" },
         ]}
         value={state.userType}
-        onChange={e => dispatch({ type: "userTypeChanged", payload: e.target.value as UserType})}
+        onChange={(e) =>
+          dispatch({
+            type: "userTypeChanged",
+            payload: e.target.value as UserType,
+          })
+        }
         required={true}
         disabled={false}
       />
 
-      {state.userType === "NON_MEDICAL" && <NonMedicalForm {...{state, dispatch}}/>}
-      {state.userType === "NURSE" && <NurseForm {...{state, dispatch}}/>}
-      {state.userType === "DOCTOR" && <DoctorForm {...{state, dispatch}}/>}
+      {state.userType === "NON_MEDICAL" && (
+        <NonMedicalForm {...{ state, dispatch }} />
+      )}
+      {state.userType === "NURSE" && <NurseForm {...{ state, dispatch }} />}
+      {state.userType === "DOCTOR" && <DoctorForm {...{ state, dispatch }} />}
 
-      <Submit label="Go to payment" disabled={disabled} />
+      <Submit
+        label="Go to payment"
+        loadingText="Redirecting"
+        loading={loading}
+      />
     </form>
   );
 };

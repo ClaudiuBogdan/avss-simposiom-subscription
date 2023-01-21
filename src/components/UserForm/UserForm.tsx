@@ -22,8 +22,7 @@ export const UserForm: FC<Props> = () => {
 
   return (
     <section>
-      <UserFormComponent disabled={loading} onSubmit={handleSubmit} />
-      {loading && <p>Loading...</p>}
+      <UserFormComponent loading={loading} onSubmit={handleSubmit} />
       {errors && <Errors errors={errors} />}
     </section>
   );
