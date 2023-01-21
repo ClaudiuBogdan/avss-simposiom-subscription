@@ -1,12 +1,16 @@
-import Link from "next/link";
+import { CanceledPayment } from "@/components/CanceledPayment";
+import Head from "next/head";
 
-export default function CanceledPayment() {
+export default function CanceledPaymentPage() {
   return (
     <>
-      <h1>Payment canceled</h1>
-      <button>
-        <Link href="/">Go back to home</Link>
-      </button>
+      <Head>
+        <title>Canceled payment</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="description" content="successful payment" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <CanceledPayment />
     </>
   );
 }
