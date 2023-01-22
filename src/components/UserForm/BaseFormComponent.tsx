@@ -120,8 +120,8 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
       {errors && <Errors errors={errors} />}
 
       <Submit
-        label="Go to payment"
-        loadingText="Redirecting"
+        label="Înregistrare"
+        loadingText="Redirecționare către plata..."
         loading={loading}
       />
     </form>

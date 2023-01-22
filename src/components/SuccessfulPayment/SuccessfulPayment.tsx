@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 
 export const SuccessfulPayment: FC = () => {
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
