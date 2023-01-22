@@ -3,6 +3,8 @@ import { FC, useEffect } from "react";
 
 export const Messenger: FC = () => {
   useEffect(() => {
+    if(!webConfig.facebook.pageId) return;
+    
     var chatbox = document.getElementById("fb-customer-chat");
     if (!chatbox) return;
     chatbox.setAttribute("page_id", webConfig.facebook.pageId);
