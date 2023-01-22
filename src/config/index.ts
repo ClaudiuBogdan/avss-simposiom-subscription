@@ -36,4 +36,7 @@ export const config = {
       pass: loadEnv("SMTP_PASSWORD"),
     },
   },
+  facebook: {
+    pageId: loadEnv("FACEBOOK_PAGE_ID"),
+  }
 };
