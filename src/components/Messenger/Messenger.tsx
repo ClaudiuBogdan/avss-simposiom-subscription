@@ -1,8 +1,10 @@
-import { config } from "@/config";
 import Script from "next/script";
 import { FC } from "react";
 
 export const Messenger: FC = () => {
+
+  const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
+  
   return (
     <>
       <div id="fb-root"></div>
@@ -19,7 +21,7 @@ export const Messenger: FC = () => {
     
         <script>
           var chatbox = document.getElementById('fb-customer-chat');
-          chatbox.setAttribute("page_id", "${config.facebook.pageId}}");
+          chatbox.setAttribute("page_id", "${facebookPageId}}");
           chatbox.setAttribute("attribution", "biz_inbox");
         </S>
     
