@@ -1,9 +1,8 @@
-import { webConfig } from "@/config/web";
 import Script from "next/script";
 import { FC, useEffect, useId } from "react";
 
 export const Messenger: FC = () => {
-  const facebookPageId = webConfig.facebook.pageId;
+  const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
  const uuid = useId();
  const fbScriptId = `fb-script-${uuid}`;
 
