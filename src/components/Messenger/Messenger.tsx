@@ -1,10 +1,11 @@
+import { webConfig } from "@/config/web";
 import { FC, useEffect } from "react";
 
 export const Messenger: FC = () => {
   useEffect(() => {
     var chatbox = document.getElementById("fb-customer-chat");
     if (!chatbox) return;
-    chatbox.setAttribute("page_id", "${webConfig.facebook.pageId}");
+    chatbox.setAttribute("page_id", webConfig.facebook.pageId);
     chatbox.setAttribute("attribution", "biz_inbox");
 
     if (!window) return;
