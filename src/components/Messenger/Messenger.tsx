@@ -4,6 +4,10 @@ import { FC, useEffect } from "react";
 export const Messenger: FC = () => {
   const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
 
+  if (!facebookPageId) {
+    return null;
+  }
+
   return (
     <>
       <div id="fb-root"></div>
