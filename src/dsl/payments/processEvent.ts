@@ -23,7 +23,7 @@ export const processEvent = async (event: Stripe.Event) => {
       const payment = mapEventToPayment(event);
       const user = await updateUserPayment(payment.customerId, payment);
 
-      const paymentId = payment.id.substring(2, 10);
+      const paymentId = payment.id.substring(3, 11);
       const paymentAmount =
         (payment.amount / 100).toFixed(2) +
         " " +

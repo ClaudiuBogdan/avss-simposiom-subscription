@@ -3,7 +3,7 @@ import { FC, useEffect } from "react";
 import { Errors } from "./Errors";
 import { FormState } from "./types";
 import { useContainer } from "./useContainer";
-import { UserFormComponent } from "./UserFormComponent";
+import { UserFormComponent } from "./BaseFormComponent";
 
 type Props = {};
 
