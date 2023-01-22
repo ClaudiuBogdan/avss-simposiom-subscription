@@ -7,6 +7,16 @@ export type UserFormData = {
   [key: string]: string | number | boolean;
 };
 
+export type CreateUserResponse = {
+  user: {
+    id: string;
+  };
+  checkout: {
+    url: string;
+  };
+  errors?: string[];
+};
+
 export const useCreateUser = () => {
   const userUrl = "/api/users";
   const {
@@ -18,7 +28,7 @@ export const useCreateUser = () => {
     userUrl,
     (url, { arg }) =>
       axios
-        .post(url, arg, {
+        .post<CreateUserResponse>(url, arg, {
           validateStatus: function (status) {
             return status < 500; // Resolve only if the status code is less than 500
           },

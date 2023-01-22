@@ -20,6 +20,7 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(loading) return;
 
     onSubmit(state);
   };
