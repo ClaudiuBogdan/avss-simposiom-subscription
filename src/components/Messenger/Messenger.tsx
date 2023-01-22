@@ -27,7 +27,7 @@ export const Messenger: FC = () => {
   useEffect(() => {
     var chatbox = document.getElementById("fb-customer-chat");
     // @ts-ignore
-    chatbox.setAttribute("page_id", "100083874741432");
+    chatbox.setAttribute("page_id", "102809999197189");
     // @ts-ignore
     chatbox.setAttribute("attribution", "biz_inbox");
   }, []);
