@@ -1,4 +1,3 @@
-import { Messenger } from "@/components/Messenger";
 import { UserForm } from "@/components/UserForm";
 import Head from "next/head";
 
@@ -20,7 +19,6 @@ export default function Registration() {
           <UserForm />
         </main>
       </div>
-      <Messenger />
     </div>
   );
 }

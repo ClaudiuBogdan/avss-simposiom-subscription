@@ -4,14 +4,6 @@ import { FC, useEffect } from "react";
 export const Messenger: FC = () => {
   const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
 
-  useEffect(() => {
-    // @ts-ignore
-    if (window && window.fbAsyncInit) {
-      // @ts-ignore
-      window.fbAsyncInit();
-    }
-  }, []);
-
   return (
     <>
       <div id="fb-root"></div>

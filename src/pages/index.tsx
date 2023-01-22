@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { Messenger } from "@/components/Messenger";
 import Head from "next/head";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
       </Head>
       <main>
         <Hero />
-        <Messenger />
       </main>
     </>
   );
