@@ -6,12 +6,9 @@ export const Messenger: FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-    if (FB) {
+    if (window && window.fbAsyncInit) {
       // @ts-ignore
-      FB.init({
-        xfbml: true,
-        version: "v15.0",
-      });
+      window.fbAsyncInit();
     }
   }, []);
 
