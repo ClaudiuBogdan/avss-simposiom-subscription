@@ -12,8 +12,7 @@ export const Submit: FC<Props> = ({ label, loading, loadingText }) => {
       <div className="md:w-1/3"></div>
       <div className="md:w-2/3">
         <button
-          // className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed"
-          className="inline-flex items-center px-4 py-2 shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          className="inline-flex items-center text-lg px-12 py-2 shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
           type="submit"
           disabled={loading}
         >

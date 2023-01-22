@@ -8,6 +8,7 @@ import { FormState, UserType } from "./types";
 import { Selector } from "./Selector";
 import { initialState, reducer } from "./store";
 import { Errors } from "./Errors";
+import { GDPRAgreement } from "./GDPRAgreement";
 
 type Props = {
   onSubmit: (data: FormState) => void;
@@ -116,6 +117,12 @@ export const UserFormComponent: FC<Props> = ({ onSubmit, loading, errors }) => {
       )}
       {state.userType === "NURSE" && <NurseForm {...{ state, dispatch }} />}
       {state.userType === "DOCTOR" && <DoctorForm {...{ state, dispatch }} />}
+
+      <GDPRAgreement 
+        value={state.gdprAgreement}
+        onChange={() =>
+          dispatch({ type: "gdprAgreementChanged", payload: !state.gdprAgreement })
+        }/>
 
       {errors && <Errors errors={errors} />}
 

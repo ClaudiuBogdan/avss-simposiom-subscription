@@ -21,6 +21,7 @@ export type FormState = {
   doctorType: string
   cuim: string
   specialty: string
+  gdprAgreement: boolean
 }
 
 export type FormAction = {
@@ -68,4 +69,7 @@ export type FormAction = {
 } | {
   type: 'specialtyChanged'
   payload: string
+} | {
+  type: 'gdprAgreementChanged'
+  payload: boolean
 }
