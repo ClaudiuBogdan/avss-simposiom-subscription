@@ -11,7 +11,7 @@ export const Messenger: FC = () => {
       <Script strategy="lazyOnload" id="fb-script-container">
         {`
             var chatbox = document.getElementById('fb-customer-chat');
-            chatbox.setAttribute("page_id", "${webConfig.facebook.pageId}}");
+            chatbox.setAttribute("page_id", "${webConfig.facebook.pageId}");
             chatbox.setAttribute("attribution", "biz_inbox");
 
             window.fbAsyncInit = function() {
