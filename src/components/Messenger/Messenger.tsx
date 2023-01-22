@@ -1,10 +1,19 @@
 import Script from "next/script";
-import { FC, useEffect, useId } from "react";
+import { FC, useEffect } from "react";
 
 export const Messenger: FC = () => {
   const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
- const uuid = useId();
- const fbScriptId = `fb-script-${uuid}`;
+
+  useEffect(() => {
+    // @ts-ignore
+    if (FB) {
+      // @ts-ignore
+      FB.init({
+        xfbml: true,
+        version: "v15.0",
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -31,7 +40,7 @@ export const Messenger: FC = () => {
             js = d.createElement(s); js.id = id;
             js.src = 'https://connect.facebook.net/ro_RO/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', '${fbScriptId}'));
+            }(document, 'script', 'facebook-jssdk'));
             `}
       </Script>
     </>
