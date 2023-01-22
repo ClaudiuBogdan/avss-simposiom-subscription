@@ -1,0 +1,37 @@
+import { FC, useEffect } from "react";
+
+export const Messenger: FC = () => {
+  useEffect(() => {
+    window.fbAsyncInit = function () {
+      //@ts-ignore
+      FB.init({
+        xfbml: true,
+        version: "v15.0",
+      });
+    };
+
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  });
+
+  useEffect(() => {
+    var chatbox = document.getElementById("fb-customer-chat");
+    chatbox.setAttribute("page_id", "100083874741432");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  }, []);
+
+  return (
+    <>
+      <div id="fb-root"></div>
+
+      <div id="fb-customer-chat" className="fb-customerchat"></div>
+    </>
+  );
+};
