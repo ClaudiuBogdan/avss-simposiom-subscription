@@ -9,3 +9,15 @@
       margin: 0;
     }
   }
+
+#ekg-img{
+  stroke-dasharray: 1345;
+  stroke-dashoffset: 1345;
+  animation: ekg-animation 3s ease-in-out forwards; 
+}
+
+@keyframes ekg-animation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

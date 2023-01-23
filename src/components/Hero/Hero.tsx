@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import HeroImg from "../../../public/assets/images/hero.gif";
+import { EkgAnimated } from "./EkgAnimated";
 
 export const Hero: FC = () => {
   return (
@@ -12,9 +12,9 @@ export const Hero: FC = () => {
             ZILELE MEDICINEI DE URGENTĂ SIBIENE
           </h1>
           <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            Va asteptam la Simpozionul &quot;Zilele Medicinei de Urgenta Sibiene&quot;,
-            unde veti invata lucrurile de baza in acordarea primului ajutor, si
-            nu numai.
+            Va asteptam la Simpozionul &quot;Zilele Medicinei de Urgenta
+            Sibiene&quot;, unde veti invata lucrurile de baza in acordarea
+            primului ajutor, si nu numai.
           </p>
           <Link
             href="/registration"
@@ -42,11 +42,7 @@ export const Hero: FC = () => {
           </Link>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <Image
-            className="object-cover object-center w-full h-full p-20"
-            src={HeroImg}
-            alt="mockup"
-          />
+          <EkgAnimated />
         </div>
       </div>
     </section>
