@@ -1,20 +1,22 @@
+import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 
 export const CanceledPayment: FC = () => {
   const [seconds, setSeconds] = useState(5);
+  const router = useRouter();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setSeconds((seconds) => seconds - 1);
+      setSeconds((seconds) => (seconds > 0 ? seconds - 1 : 0));
     }, 1000);
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
     if (seconds <= 0) {
-      window.location.href = "/";
+      router.replace("/");
     }
-  }, [seconds]);
+  }, [seconds, router]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
